@@ -1,0 +1,246 @@
+/* Resetando estilo padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+* img {
+    -webkit-user-drag: none; 
+}
+
+/* Corpo da página */
+body {
+    background-color: #eee9e9;
+    color: #333;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    height: auto;
+    border-bottom: 2px solid #e5e7eb;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logoHead {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logoHead #image {
+    width: 80px;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.logoHead:hover #image {
+    transform: rotate(10deg) scale(1.1);
+    pointer-events: none;
+}
+
+.logoHead #text {
+    width: 15em;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    pointer-events: none;
+}
+
+/* Container */
+.container {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Galeria */
+.galeria {
+    box-shadow: 10px 10px 10px 5px;
+    overflow: hidden;
+    width: 70%;
+    height: auto;
+    margin-bottom: 40px;
+    position: relative;
+    border-radius: 15px;
+}
+
+.carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    height: auto;
+    scroll-behavior: smooth;
+    justify-content: start;
+}
+
+.item {
+    min-width: 100%;
+    height: auto;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Controles do Carrossel */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.carousel-controls button {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-controls .prev {
+    border-radius: 0 10px 10px 0;
+}
+
+.carousel-controls .next {
+    border-radius: 10px 0 0 10px;
+}
+
+.carousel-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Descrição */
+.descricao {
+    padding: 20px 30px;
+    text-align: justify;
+    background-color: #fff;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 1300px;
+    line-height: 1.6;
+}
+
+.descricao h1 {
+    font-size: 40px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.descricao p {
+    font-size: 16px;
+    color: #3a3838;
+    margin-bottom: 15px;
+}
+
+.descricao .btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.descricao .btn:hover {
+    background-color: #0056b3;
+    transition: background-color 0.3s;
+}
+
+/* Media Queries */
+
+/* Para telas menores que 450px */
+@media (max-width: 450px) {
+    .logoHead {
+        height: 50px;
+        justify-content: center;
+    }
+
+    .logoHead #image {
+        width: 18%;
+    }
+
+    .logoHead:hover #image {
+        transform: none;
+    }
+
+    .logoHead #text {
+        width: 70%;
+    }
+
+    .galeria {
+        border-radius: 0;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .carousel-controls button {
+        padding: 6px;
+    }
+
+    .descricao {
+        padding: 30px 15px;
+        text-align: center;
+        border-radius: 0;
+    }
+}
+
+/* Para telas entre 450px e 1000px */
+@media (min-width: 450px) and (max-width: 1000px) {
+    .logoHead {
+        justify-content: center;
+    }
+
+    .logoHead #image {
+        width: 10%;
+    }
+
+    .logoHead:hover #image {
+        transform: none;
+    }
+
+    .logoHead #text {
+        width: 40%;
+    }
+
+    .galeria {
+        border-radius: 0;
+        width: 100%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-controls button {
+        padding: 10px;
+    }
+
+    .descricao {
+        padding: 40px 20px;
+        text-align: center;
+        background-color: #fff;
+        margin: 0;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+}

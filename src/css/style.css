@@ -1,0 +1,609 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html {
+    scroll-behavior: smooth; /* Adiciona rolagem suave */
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+header {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    height: auto;
+    border-bottom: 2px solid #e5e7eb;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.menu {
+    display: flex; /* Certifique-se de que flex está aplicado */
+    justify-content: space-between;
+    width: 40%; /* Ajuste a largura conforme necessário */
+}
+
+.menu a {
+    font-size: 20px;
+    color: #6b7ea6;
+    text-decoration: none;
+    padding: 5px 0;
+    position: relative; /* Necessário para a pseudo-classe */
+    transition: all 0.3s ease; /* Transição suave */
+}
+
+.menu a.active {
+    color: #1D4ED8; /* Cor diferente para o link ativo */
+}
+
+.menu a.active::after {
+    content: ''; /* Adiciona uma pseudo-classe */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; /* Altura da listra */
+    background-color: #1D4ED8; /* Cor da listra */
+    transition: all 0.3s ease; /* Animação suave */
+}
+
+.logoHead {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logoHead #image {
+    width: 80px;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.logoHead:hover #image {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.logoHead #text {
+    width: 15em;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    pointer-events: none;
+}
+
+.menu-mobile-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Estilos para o menu mobile */
+.menu-mobile {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Oculto inicialmente */
+    width: 250px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.menu-mobile a {
+    margin: 15px 0;
+    font-size: 1.2rem;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.menu-mobile a:hover {
+    color: #1D4ED8;
+}
+
+/* Classe para exibir o menu mobile */
+.menu-mobile.active {
+    right: 0;
+}
+
+/* Capa */
+.capa {
+    scroll-margin-top: 100px;
+    position: relative;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+}
+
+.capa img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.capa h1, 
+.capa h3 {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
+
+.capa h1 {
+    bottom: 80px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.capa h3 {
+    bottom: 40px;
+    font-size: 1.5rem;
+}
+
+.capa::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+/* Parte 2 */
+.parte2, .parte3{
+    scroll-margin-top: 50px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 20px;
+    /* background: linear-gradient(to bottom, #ffffff, #f9f9f9); */
+    background-color: white;
+}
+
+.parte2 .topicos {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    gap: 20px;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 200%;
+}
+
+.parte2 .topico {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 36vh;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.topico:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.topico img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.topico:hover img {
+    transform: scale(1.05);
+}
+
+.topico button {
+    opacity: 0;
+    transform: translateY(20px);
+    background: linear-gradient(to right, #4A90E2, #357ABD);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.topico:hover button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.topico button:hover {
+    background: linear-gradient(to right, #357ABD, #285A8E);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+.topico button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.parte3 .topicos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 200%;
+}
+
+.parte3 .topico {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 36vh;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.parte4 {
+    scroll-margin-top: 50px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    box-sizing: border-box;
+    transition: background 0.3s ease; /* Transição suave no fundo */
+}
+
+.parte4 .quadro {
+    border-radius: 30px;
+    display: flex;
+    width: 60%; /* Ajuste para tornar o quadro mais espaçoso */
+    height: 450px; /* Aumentando a altura para dar mais destaque */
+    background-color: #dde1e9;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Sombra mais suave e sutil */
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.parte4 .quadro .text {
+    width: 55%; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px; /* Aumentando o espaçamento interno */
+    text-align: start; 
+    box-sizing: border-box; 
+    height: 100%; 
+}
+
+.parte4 .quadro .text h1 {
+    font-size: 3rem; /* Destaque maior para o título */
+    font-weight: bold;
+    color: #3a3a3a; /* Cor mais sofisticada */
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+.parte4 .quadro .text p {
+    font-size: 1.2rem; /* Texto mais legível */
+    color: #5a5a5a;
+    margin-bottom: 25px;
+}
+
+
+.parte4 .quadro .text .social-icons {
+    padding-bottom: 25%;
+}
+
+.parte4 .quadro .text .social-icons a {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre o ícone e o texto */
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #4b79a1; /* Azul suave */
+    background-color: #f4f4f4;
+    padding: 10px 15px; /* Adicionando preenchimento */
+    border-radius: 25px; /* Bordas arredondadas */
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.parte4 .quadro .text .social-icons a:hover {
+    background-color: #4b79a1; /* Cor de fundo ao passar o mouse */
+    color: #fff; /* Texto branco */
+    transform: translateY(-5px); /* Elevação ao passar o mouse */
+}
+
+.parte4 .quadro .text .social-icons i {
+    font-size: 1.5rem; 
+}
+
+.parte4 .quadro .localizacao {
+    width: 45%;
+}
+
+.parte4 .quadro iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    transition: transform 0.3s ease;
+}
+
+.parte4 .quadro iframe:hover {
+    transform: scale(1.02); /* Efeito de zoom no iframe ao passar o mouse */
+}
+
+
+
+
+footer {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(to right, #2563eb, #1d4ed8); /* Gradiente azul moderno */
+    color: white; /* Texto branco para contraste */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15); /* Sombra leve para destacar */
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 1rem; /* Tamanho do texto */
+}
+
+footer a {
+    color: #93c5fd; /* Azul claro */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffffff; /* Branco ao passar o mouse */
+    text-decoration: underline;
+}
+
+
+
+/* Mobile Responsivo */
+@media (max-width: 450px) {
+/* Ocultar o menu desktop */
+.menu {
+    display: none;
+}
+
+/* Mostrar o ícone do menu mobile */
+.menu-mobile-icon {
+    display: block;
+}
+
+    .logoHead {
+        height: 50px;
+        justify-content: center;
+    }
+
+    .logoHead #image {
+        width: 18%;
+    }
+
+    .logoHead:hover #image {
+        transform: none;
+    }
+
+    .logoHead #text {
+        width: 70%;
+    }
+
+    .capa {
+        height: 300px;
+    }
+
+    .capa h1, 
+    .capa h3 {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        color: white;
+        z-index: 1;
+    }
+    
+    .capa h1 {
+        bottom: 8%;
+        font-size: 100%;
+    }
+    
+    .capa h3 {
+        bottom: 1%;
+        font-size: 90%;
+    }
+
+    .parte2 {
+        background-color: white;
+        height: auto;
+    }
+
+    .parte2 h1 {
+        font-size: 25px;
+    }
+
+    .parte2 .topicos {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: scroll;
+        gap: 20px;
+        padding: 10px 0;
+        scroll-behavior: smooth;
+        width: 100%;
+        height: 200%;
+    }
+    
+    
+    .parte2 .topico {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 40vh;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.20);
+        background: #fff;
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .topico:hover {
+        transform: none;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.20);
+    }
+    
+    .topico img {
+        width: 105%;
+        height: 160px;
+        transition: transform 0.3s ease;
+    }
+    
+    .topico:hover img {
+        transform: none;
+    }
+    
+    .topico button {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .topico:hover button {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .topico button:hover {
+        background: linear-gradient(to right, #357ABD, #285A8E);
+        transform: none;
+    }
+    
+    .topico button:active {
+        transform: scale(0.95);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .parte3 .topicos {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: scroll;
+        gap: 20px;
+        padding: 10px 0;
+        scroll-behavior: smooth;
+        width: 100%;
+        height: 200%;
+    }
+    
+    .parte3 .topico {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 36vh;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        background: #fff;
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .parte4 {
+        scroll-margin-top: 50px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        padding: 60px 0;
+        background: linear-gradient(135deg, #ffffff, #f9f9f9);
+        box-sizing: border-box;
+        transition: background 0.3s ease; /* Transição suave no fundo */
+    }
+    
+    .parte4 .quadro {
+        flex-direction: column;
+        width: 90%; 
+        height: 500px;
+    }
+    
+    .parte4 .quadro .text {
+        width: 100%; 
+    }
+    
+    .parte4 .quadro .text h1 {
+        font-size: 2rem;
+    }
+    
+    .parte4 .quadro .text p {
+        font-size: 1rem; 
+    }
+    
+    .parte4 .quadro .text .social-icons i {
+        font-size: 1.5rem; 
+    }
+    
+    .parte4 .quadro .localizacao {
+        width: 100%;
+    }
+    
+}

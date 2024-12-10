@@ -1,0 +1,18 @@
+ <div class="carousel">
+            <div class="slides1">
+                <img src="assets/imagens/1.jpg" alt="Casa 1" class="active">
+                <img src="assets/imagens/2 (1).jpg" alt="Casa 2">
+                <img src="assets/imagens/3.jpg" alt="Casa 3">
+                <img src="assets/imagens/4.jpg" alt="Casa 3">
+                <img src="assets/imagens/5.jpg" alt="Casa 3">
+                <img src="assets/imagens/6.jpg" alt="Casa 3">
+                <img src="assets/imagens/10.jpg" alt="Casa 3">
+                <img src="assets/imagens/11.jpg" alt="Casa 3">
+                <img src="assets/imagens/12.jpg" alt="Casa 3">
+                <img src="assets/imagens/13.jpg" alt="Casa 3">
+                <img src="assets/imagens/14.jpg" alt="Casa 3">
+                <img src="assets/imagens/15.jpg" alt="Casa 3">                
+            </div>
+            <button class="prev_1">◀</button>
+            <button class="next_1">▶</button>
+        </div>
