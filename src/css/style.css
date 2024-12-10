@@ -339,11 +339,6 @@ header a {
     margin-bottom: 25px;
 }
 
-
-.parte4 .quadro .text .social-icons {
-    padding-bottom: 25%;
-}
-
 .parte4 .quadro .text .social-icons a {
     display: flex;
     align-items: center;
@@ -433,6 +428,7 @@ footer a:hover {
 }
 
     .logoHead {
+        width: 80%;
         height: 50px;
         justify-content: center;
     }
@@ -596,6 +592,10 @@ footer a:hover {
     
     .parte4 .quadro .text p {
         font-size: 1rem; 
+    }
+
+    .parte4 .quadro .text .social-icons {
+        padding-bottom: 20%;
     }
     
     .parte4 .quadro .text .social-icons i {
