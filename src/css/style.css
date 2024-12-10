@@ -6,7 +6,22 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Adiciona rolagem suave */
+    scroll-behavior: smooth; /* Rolagem suave */
+}
+
+/* Definições da barra de rolagem */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #2563eb, #1d4ed8);
+    border-radius: 10px; 
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 
 body {
@@ -17,27 +32,27 @@ body {
 
 header {
     position: fixed;
+    top: 0;
     z-index: 2;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
-    height: auto;
     border-bottom: 2px solid #e5e7eb;
     padding: 0 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header a {
-    text-decoration: none; 
-    color: inherit; 
+    text-decoration: none;
+    color: inherit;
 }
 
 .menu {
-    display: flex; /* Certifique-se de que flex está aplicado */
+    display: flex;
     justify-content: space-between;
-    width: 40%; /* Ajuste a largura conforme necessário */
+    width: 40%;
 }
 
 .menu a {
@@ -45,23 +60,37 @@ header a {
     color: #6b7ea6;
     text-decoration: none;
     padding: 5px 0;
-    position: relative; /* Necessário para a pseudo-classe */
-    transition: all 0.3s ease; /* Transição suave */
+    position: relative;
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .menu a.active {
-    color: #1D4ED8; /* Cor diferente para o link ativo */
+    color: #1D4ED8;
 }
 
 .menu a.active::after {
-    content: ''; /* Adiciona uma pseudo-classe */
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px; /* Altura da listra */
-    background-color: #1D4ED8; /* Cor da listra */
-    transition: all 0.3s ease; /* Animação suave */
+    height: 2px;
+    background-color: #1D4ED8;
+    animation: selected 0.2s ease-in-out;
+}
+
+.menu-mobile a.active {
+    color: #1D4ED8;
+    border-bottom: 2px solid #1D4ED8;
+}
+
+@keyframes selected {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
 }
 
 .logoHead {
@@ -96,15 +125,17 @@ header a {
     color: #333;
 }
 
+
+
 /* Estilos para o menu mobile */
 .menu-mobile {
     position: fixed;
     top: 0;
-    right: -100%; /* Oculto inicialmente */
+    right: -100%; 
     width: 250px;
     height: 100%;
     background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,7 +161,7 @@ header a {
     right: 0;
 }
 
-/* Capa */
+/* Estilos para a capa */
 .capa {
     scroll-margin-top: 100px;
     position: relative;
@@ -173,27 +204,24 @@ header a {
     left: 0;
     width: 100%;
     height: 200px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
 }
 
-/* Parte 2 */
-.parte2, .parte3{
+
+/* Estilos gerais para as partes */
+.parte2, .parte3 {
     scroll-margin-top: 50px;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 40px 20px;
-    /* background: linear-gradient(to bottom, #ffffff, #f9f9f9); */
     background-color: white;
 }
 
-.parte2 .topicos {
+.parte2 .topicos, .parte3 .topicos {
     display: flex;
     flex-wrap: nowrap;
-    overflow: scroll;
-    overflow-x:hidden;
-    overflow-y: hidden;
     gap: 20px;
     padding: 10px 0;
     scroll-behavior: smooth;
@@ -201,7 +229,7 @@ header a {
     height: 200%;
 }
 
-.parte2 .topico {
+.parte2 .topico, .parte3 .topico {
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
@@ -267,31 +295,7 @@ header a {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.parte3 .topicos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 10px 0;
-    scroll-behavior: smooth;
-    width: 100%;
-    height: 200%;
-}
-
-.parte3 .topico {
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 36vh;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    background: #fff;
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
+/* Estilos para a parte 4 */
 .parte4 {
     scroll-margin-top: 50px;
     height: auto;
@@ -300,68 +304,98 @@ header a {
     padding: 60px 20px;
     background: linear-gradient(135deg, #ffffff, #f9f9f9);
     box-sizing: border-box;
-    transition: background 0.3s ease; /* Transição suave no fundo */
+    transition: background 0.3s ease;
 }
 
 .parte4 .quadro {
     border-radius: 30px;
     display: flex;
-    width: 60%; /* Ajuste para tornar o quadro mais espaçoso */
-    height: 450px; /* Aumentando a altura para dar mais destaque */
+    width: 60%;
+    height: 450px;
     background-color: #dde1e9;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Sombra mais suave e sutil */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
 .parte4 .quadro .text {
-    width: 55%; 
+    width: 55%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 30px; /* Aumentando o espaçamento interno */
-    text-align: start; 
-    box-sizing: border-box; 
-    height: 100%; 
+    padding: 30px;
+    text-align: start;
+    box-sizing: border-box;
+    height: 100%;
 }
 
-.parte4 .quadro .text h1 {
-    font-size: 3rem; /* Destaque maior para o título */
-    font-weight: bold;
-    color: #3a3a3a; /* Cor mais sofisticada */
+.parte4 .quadro .text h1,
+.parte4 .quadro .text h2,
+.parte4 .quadro .text h3 {
+    color: #3a3a3a;
     line-height: 1.3;
     margin-bottom: 15px;
 }
 
+.parte4 .quadro .text h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.parte4 .quadro .text h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.parte4 .quadro .text h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
 .parte4 .quadro .text p {
-    font-size: 1.2rem; /* Texto mais legível */
+    font-size: 1.2rem;
     color: #5a5a5a;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
+}
+
+.parte4 .quadro .text .informacoes {
+    overflow: scroll;
+    width: 100%;
+    max-height: 400px;
+}
+
+.parte4 .quadro .text .social-icons {
+    display: flex;
+    gap: 50px;
 }
 
 .parte4 .quadro .text .social-icons a {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaçamento entre o ícone e o texto */
+    gap: 10px;
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: 500;
-    color: #4b79a1; /* Azul suave */
+    color: #4b79a1;
     background-color: #f4f4f4;
-    padding: 10px 15px; /* Adicionando preenchimento */
-    border-radius: 25px; /* Bordas arredondadas */
+    padding: 10px 15px;
+    border-radius: 25px;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.parte4 .quadro .text .social-icons h3 {
+    font-size: 15px;
 }
 
 .parte4 .quadro .text .social-icons a:hover {
-    background-color: #4b79a1; /* Cor de fundo ao passar o mouse */
-    color: #fff; /* Texto branco */
-    transform: translateY(-5px); /* Elevação ao passar o mouse */
+    background-color: #4b79a1;
+    color: #fff;
+    transform: translateY(-5px);
 }
 
 .parte4 .quadro .text .social-icons i {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
 }
 
 .parte4 .quadro .localizacao {
@@ -376,60 +410,116 @@ header a {
 }
 
 .parte4 .quadro iframe:hover {
-    transform: scale(1.02); /* Efeito de zoom no iframe ao passar o mouse */
+    transform: scale(1.02);
 }
 
 
-
-
+/* Estilo do Footer */
 footer {
     width: 100%;
-    height: auto;
-    background: linear-gradient(to right, #2563eb, #1d4ed8); /* Gradiente azul moderno */
-    color: white; /* Texto branco para contraste */
+    background: linear-gradient(to right, #2563eb, #1d4ed8); 
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15); /* Sombra leve para destacar */
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15); 
 }
 
 footer p {
     margin: 10px 0;
-    font-size: 1rem; /* Tamanho do texto */
+    font-size: 1rem; 
 }
 
 footer a {
-    color: #93c5fd; /* Azul claro */
+    color: #93c5fd;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: #ffffff; /* Branco ao passar o mouse */
+    color: #ffffff;
     text-decoration: underline;
 }
 
+/* Estilo do Pop-up */
+.popup {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 3;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Conteúdo do Pop-up */
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 80%;
+    max-width: 500px; 
+}
+
+.popup-content h1, .popup-content h3 {
+    padding-bottom: 10px;
+}
+
+/* Redes sociais do desenvolvedor */
+.popup-content .sociais-desenvolvedor {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+    font-size: 30px;
+}
+
+.popup-content .sociais-desenvolvedor a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Botão de fechar */
+.close {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #faf6f6; 
+}
+
+.close:hover {
+    color: #f00; 
+}
 
 
 /* Mobile Responsivo */
 @media (max-width: 450px) {
-/* Ocultar o menu desktop */
-.menu {
-    display: none;
-}
+    /* Ocultar o menu desktop */
+    .menu {
+        display: none;
+    }
 
-/* Mostrar o ícone do menu mobile */
-.menu-mobile-icon {
-    display: block;
-}
+    /* Mostrar o ícone do menu mobile */
+    .menu-mobile-icon {
+        display: block;
+    }
 
     .logoHead {
         width: 80%;
         height: 50px;
+        display: flex;
         justify-content: center;
     }
 
@@ -437,19 +527,19 @@ footer a:hover {
         width: 18%;
     }
 
-    .logoHead:hover #image {
-        transform: none;
-    }
-
     .logoHead #text {
         width: 70%;
+    }
+
+    .logoHead:hover #image {
+        transform: none;
     }
 
     .capa {
         height: 300px;
     }
 
-    .capa h1, 
+    .capa h1,
     .capa h3 {
         position: absolute;
         width: 100%;
@@ -457,12 +547,12 @@ footer a:hover {
         color: white;
         z-index: 1;
     }
-    
+
     .capa h1 {
         bottom: 8%;
         font-size: 100%;
     }
-    
+
     .capa h3 {
         bottom: 1%;
         font-size: 90%;
@@ -487,8 +577,7 @@ footer a:hover {
         width: 100%;
         height: 200%;
     }
-    
-    
+
     .parte2 .topico {
         flex: 0 0 auto;
         display: flex;
@@ -496,45 +585,41 @@ footer a:hover {
         align-items: center;
         text-align: center;
         width: 40vh;
-        height: auto;
         border-radius: 15px;
         box-shadow: 0 8px 12px rgba(0, 0, 0, 0.20);
         background: #fff;
         padding: 20px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
-    .topico:hover {
+
+    .parte2 .topico:hover {
         transform: none;
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.20);
     }
-    
-    .topico img {
+
+    .parte2 .topico img {
         width: 105%;
         height: 160px;
         transition: transform 0.3s ease;
     }
-    
-    .topico:hover img {
+
+    .parte2 .topico:hover img {
         transform: none;
     }
-    
-    .topico button {
+
+    .parte2 .topico button {
         opacity: 1;
-        transform: none;
     }
-    
-    .topico:hover button {
+
+    .parte2 .topico:hover button {
         opacity: 1;
-        transform: none;
     }
-    
-    .topico button:hover {
-        background: linear-gradient(to right, #357ABD, #285A8E);
-        transform: none;
+
+    .parte2 .topico button:hover {
+        background: linear-gradient(to right, #357abd, #285a8e);
     }
-    
-    .topico button:active {
+
+    .parte2 .topico button:active {
         transform: scale(0.95);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
@@ -549,7 +634,7 @@ footer a:hover {
         width: 100%;
         height: 200%;
     }
-    
+
     .parte3 .topico {
         flex: 0 0 auto;
         display: flex;
@@ -557,7 +642,6 @@ footer a:hover {
         align-items: center;
         text-align: center;
         width: 36vh;
-        height: auto;
         border-radius: 15px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         background: #fff;
@@ -573,37 +657,331 @@ footer a:hover {
         padding: 60px 0;
         background: linear-gradient(135deg, #ffffff, #f9f9f9);
         box-sizing: border-box;
-        transition: background 0.3s ease; /* Transição suave no fundo */
+        transition: background 0.3s ease;
+    }
+
+    .parte4 .quadro {
+        flex-direction: column;
+        width: 90%;
+        height: 530px;
+    }
+
+    .parte4 .quadro .text {
+        width: 100%;
+    }
+
+    .parte4 .quadro .text h1 {
+        font-size: 1.6rem;
+    }
+
+    .parte4 .quadro .text h2,
+    .parte4 .quadro .text h3,
+    .parte4 .quadro .text h4 {
+        font-size: 0.7em;
+    }
+
+    .parte4 .quadro .text p {
+        font-size: 0.8rem;
+    }
+
+    .parte4 .quadro .text .informacoes {
+        overflow: scroll;
+        overflow-x: hidden;
+        width: 100%;
+        max-height: 170px;
+    }
+
+    .parte4 .quadro .text .social-icons {
+        gap: 30px;
+    }
+
+    .parte4 .quadro .text .social-icons a {
+        font-size: 10px;
+        white-space: nowrap;
+    }
+
+    .parte4 .quadro .text .social-icons a:hover {
+        background-color: #f4f4f4;
+        color: #4b79a1;
+    }
+
+    .parte4 .quadro .text .social-icons a:active {
+        transform: scale(0.9);
+        transition: all 0.1s;
+    }
+
+    .parte4 .quadro .text .social-icons i {
+        white-space: nowrap;
+        font-size: 1rem;
+    }
+
+    .parte4 .quadro .text .social-icons h3 {
+        white-space: nowrap;
+        font-size: 0.6rem;
+        padding-top: 10px;
+    }
+
+    .parte4 .quadro .localizacao {
+        width: 100%;
+    }
+
+    footer .criador {
+        display: none;
+    }
+
+    .popup-content h1,
+    .popup-content h3 {
+        font-size: 20px;
+        padding-bottom: 5px;
+    }
+
+    .popup-content .sociais-desenvolvedor {
+        padding-top: 10px;
+    }
+
+    .popup-content .sociais-desenvolvedor a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /* Botão para fechar */
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
+        cursor: pointer;
+        color: #f5f2f2;
+    }
+
+    .close:hover {
+        color: #f00;
+    }
+}
+
+@media (min-width: 450px) and (max-width: 990px) {
+    /* Menu */
+    .menu {
+        width: 55%; 
     }
     
+    .menu a {
+        font-size: 18px;
+        color: #6b7ea6;
+        text-decoration: none;
+        padding: 5px 0;
+        position: relative; 
+        transition: all 0.3s ease; 
+    }
+
+    /* Logo */
+    .logoHead {
+        width: 40%;
+        height: 50px;
+        justify-content: center;
+    }
+
+    .logoHead #image {
+        width: 18%;
+    }
+
+    .logoHead:hover #image {
+        transform: none;
+    }
+
+    .logoHead #text {
+        width: 70%;
+    }
+
+    /* Capa */
+    .capa {
+        height: 550px;
+    }
+
+    .capa h1, 
+    .capa h3 {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        color: white;
+        z-index: 1;
+    }
+
+    .capa h1 {
+        bottom: 8%;
+        font-size: 100%;
+    }
+
+    .capa h3 {
+        bottom: 1%;
+        font-size: 90%;
+    }
+
+    /* Seções 2 e 3 */
+    .parte2, .parte3 {
+        scroll-margin-top: 200px;
+    }
+
+    .parte2 h1 {
+        font-size: 25px;
+    }
+
+    .parte2 .topicos, 
+    .parte3 .topicos {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: scroll;
+        gap: 20px;
+        padding: 10px 0;
+        scroll-behavior: smooth;
+        width: 100%;
+        height: 200%;
+    }
+
+    .parte2 .topico, 
+    .parte3 .topico {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 40vh;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.20);
+        background: #fff;
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .topico:hover {
+        transform: none;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.20);
+    }
+
+    .topico img {
+        width: 105%;
+        height: 160px;
+        transition: transform 0.3s ease;
+    }
+
+    .topico:hover img {
+        transform: none;
+    }
+
+    .topico button {
+        opacity: 1;
+        transform: none;
+    }
+
+    .topico:hover button {
+        opacity: 1;
+        transform: none;
+    }
+
+    .topico button:hover {
+        background: linear-gradient(to right, #357ABD, #285A8E);
+        transform: none;
+    }
+
+    .topico button:active {
+        transform: scale(0.95);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Parte 4 */
+    .parte4 {
+        scroll-margin-top: 50px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        padding: 60px 0;
+        background: linear-gradient(135deg, #ffffff, #f9f9f9);
+        box-sizing: border-box;
+        transition: background 0.3s ease; 
+    }
+
     .parte4 .quadro {
         flex-direction: column;
         width: 90%; 
-        height: 500px;
+        height: 550px;
     }
-    
+
     .parte4 .quadro .text {
         width: 100%; 
     }
-    
+
     .parte4 .quadro .text h1 {
-        font-size: 2rem;
+        font-size: 2.5rem; 
     }
-    
+
+    .parte4 .quadro .text h2 {
+        font-size: 1.2rem; 
+    }
+
+    .parte4 .quadro .text h3 {
+        font-size: 1rem; 
+    }
+
+    .parte4 .quadro .text h4 {
+        font-size: 1em; 
+    }
+
     .parte4 .quadro .text p {
         font-size: 1rem; 
     }
 
+    .parte4 .quadro .text .informacoes {
+        max-height: 150px;
+    }
+
     .parte4 .quadro .text .social-icons {
-        padding-bottom: 20%;
+        gap: 100px;
     }
-    
+
+    .parte4 .quadro .text .social-icons a {
+        font-size: 15px;
+        white-space: nowrap;
+    }
+
+    .parte4 .quadro .text .social-icons a:hover {
+        background-color: #f4f4f4;
+        color: #4b79a1; 
+        transform: none; 
+    }
+
+    .parte4 .quadro .text .social-icons a:active {
+        transform: scale(0.9);
+        transition: all 0.1s; 
+    }
+
     .parte4 .quadro .text .social-icons i {
-        font-size: 1.5rem; 
+        white-space: nowrap;
+        font-size: 1rem; 
     }
-    
+
+    .parte4 .quadro .text .social-icons h3 {
+        white-space: nowrap;
+        font-size: 1rem; 
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
     .parte4 .quadro .localizacao {
         width: 100%;
     }
-    
+
+    /* Botão para fechar */
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
+        cursor: pointer;
+        color: #f5f2f2; 
+    }
+
+    .close:hover {
+        color: #f00; 
+    }
 }

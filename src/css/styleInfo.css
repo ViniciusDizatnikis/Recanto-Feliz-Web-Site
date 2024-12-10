@@ -35,7 +35,7 @@ header {
 }
 
 .logoHead #image {
-    width: 80px;
+    width: 10%;
     transition: transform 0.3s ease;
     pointer-events: none;
 }
@@ -168,18 +168,49 @@ header {
     background-color: #0056b3;
     transition: background-color 0.3s;
 }
+.descricao .btn:active {
+    transform: scale(0.9);
+    transition:all 0.3s;
+}
+
+footer {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(to right, #2563eb, #1d4ed8); /* Gradiente azul moderno */
+    color: white; /* Texto branco para contraste */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15); /* Sombra leve para destacar */
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 1rem; /* Tamanho do texto */
+}
+
+footer a {
+    color: #93c5fd; /* Azul claro */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
 
 /* Media Queries */
 
 /* Para telas menores que 450px */
 @media (max-width: 450px) {
     .logoHead {
-        height: 50px;
+        height: auto;
         justify-content: center;
     }
 
     .logoHead #image {
-        width: 18%;
+        width: 15%;
+        padding: 1px;
     }
 
     .logoHead:hover #image {
@@ -196,15 +227,30 @@ header {
         box-shadow: none;
     }
 
-    .carousel-controls button {
-        padding: 6px;
+    .descricao .btn:hover {
+        background-color: #007bff;
+        transition: none;
     }
 
+    .descricao .btn:active {
+    transform: scale(0.9);
+    transition:all 0.3s;
+}
+
+    .carousel-controls button {
+        padding: 10px;
+    }
     .descricao {
         padding: 30px 15px;
         text-align: center;
         border-radius: 0;
     }
+
+    footer p {
+        margin: 5px 0;
+        font-size: 0.7rem; 
+    }
+
 }
 
 /* Para telas entre 450px e 1000px */
@@ -234,6 +280,17 @@ header {
     .carousel-controls button {
         padding: 10px;
     }
+    
+    .descricao .btn:hover {
+        background-color: #007bff;
+        transition: none;
+    }
+
+    .descricao .btn:active {
+        transform: scale(0.9);
+        transition:all 0.3s;
+    }
+    
 
     .descricao {
         padding: 40px 20px;

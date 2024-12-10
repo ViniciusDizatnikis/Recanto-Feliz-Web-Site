@@ -1,61 +1,88 @@
+//Menu PC -------------------------------------------------------------------------------------------------
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Atualizar o link ativo no menu com base na seção visível
-    const sections = document.querySelectorAll('div[id]'); // Seleciona as seções com IDs
+    // Seleciona todas as seções com IDs e os links do menu
+    const sections = document.querySelectorAll('div[id]');
     const menuLinks = document.querySelectorAll('.menu a');
+    const menuLinksMobile = document.querySelectorAll('.menu-mobile a');
 
     function updateActiveLink() {
-        let currentSection = '';
+        const offsetAdjustment = 180; 
+        let currentSection = ''; 
 
-        // Verifica qual seção está visível
-        sections.forEach((section, index) => {
-            const sectionTop = section.offsetTop;
+        // Determina a seção visível com base no topo ajustado
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - offsetAdjustment;
             const sectionHeight = section.offsetHeight;
-            const nextSectionTop = sections[index + 1]?.offsetTop || Infinity;
 
-            // Verifica se a rolagem está dentro da seção atual
-            if (window.scrollY >= sectionTop - 500 && window.scrollY < nextSectionTop - 500) {
-                currentSection = section.getAttribute('id');
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.id;
             }
         });
 
-        // Atualiza a classe 'active' no menu
-        menuLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === currentSection) {
-                link.classList.add('active');
-            }
+        // Atualiza os links com a classe
+        [...menuLinks, ...menuLinksMobile].forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href').substring(1) === currentSection);
         });
     }
 
-    // Adiciona o evento de scroll para atualizar a classe ativa
     window.addEventListener('scroll', updateActiveLink);
 
-    // Chama a função ao carregar a página
     updateActiveLink();
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Funcionalidade do menu móvel
+// Funcionalidade do menu móvel-----------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', () => {
     const menuIcon = document.getElementById('menuMobileIcon');
     const menuMobile = document.getElementById('menuMobile');
 
-    menuIcon.addEventListener('click', function () {
+    // Abre/fecha o menu ao clicar no ícone
+    menuIcon.addEventListener('click', () => {
         menuMobile.classList.toggle('active');
     });
 
     // Fechar o menu ao clicar em um link
-    const links = document.querySelectorAll('.menu-mobile-link');
-    links.forEach(function (link) {
-        link.addEventListener('click', function () {
+    document.querySelectorAll('.menu-mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
             menuMobile.classList.remove('active');
-            console.log('Menu fechado ao clicar em um link.');
         });
     });
 
     // Fechar o menu ao clicar fora dele
-    window.addEventListener('click', function (e) {
+    window.addEventListener('click', (e) => {
         if (!menuMobile.contains(e.target) && !menuIcon.contains(e.target)) {
             menuMobile.classList.remove('active');
         }
     });
+});
+
+// Funcionalidade do pop-up
+const linkCriador = document.getElementById('link-criador');
+const popup = document.getElementById('popup');
+const close = document.getElementById('close');
+const linkContato = document.getElementById('link-contato');
+
+// Exibe o pop-up ao clicar em "Desenvolvido por"
+linkCriador.addEventListener('click', (e) => {
+    e.preventDefault();
+    popup.style.display = 'flex';
+});
+
+// Fecha o pop-up ao clicar no "X"
+close.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
+
+// Fecha o pop-up ao clicar fora do conteúdo
+window.addEventListener('click', (e) => {
+    if (e.target === popup) {
+        popup.style.display = 'none';
+    }
+});
+
+// Exibe o pop-up ao clicar em "Contato"
+linkContato.addEventListener('click', (e) => {
+    e.preventDefault();
+    popup.style.display = 'flex';
 });
