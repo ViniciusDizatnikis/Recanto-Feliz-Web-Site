@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuLinksMobile = document.querySelectorAll('.menu-mobile a');
 
     function updateActiveLink() {
-        const offsetAdjustment = 180; 
+        const offsetAdjustment = 280; 
         let currentSection = ''; 
 
         // Determina a seção visível com base no topo ajustado

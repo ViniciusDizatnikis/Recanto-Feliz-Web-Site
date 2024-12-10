@@ -219,9 +219,19 @@ header a {
     background-color: white;
 }
 
-.parte2 .topicos, .parte3 .topicos {
+.parte2 .topicos {
     display: flex;
     flex-wrap: nowrap;
+    gap: 20px;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 200%;
+}
+
+.parte3 .topicos {
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     padding: 10px 0;
     scroll-behavior: smooth;
@@ -609,6 +619,7 @@ footer a:hover {
 
     .parte2 .topico button {
         opacity: 1;
+        transform: none;
     }
 
     .parte2 .topico:hover button {
@@ -647,6 +658,14 @@ footer a:hover {
         background: #fff;
         padding: 20px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .parte3 .topico {
+        transform: none;
+    }
+
+    .parte3 .topico img{
+        transform: none;
     }
 
     .parte4 {
@@ -891,7 +910,7 @@ footer a:hover {
 
     /* Parte 4 */
     .parte4 {
-        scroll-margin-top: 50px;
+        scroll-margin-top: 60px;
         height: auto;
         display: flex;
         justify-content: center;

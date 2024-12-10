@@ -1,20 +1,18 @@
-// Obtém os elementos
 const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
 const carousel = document.querySelector('.carousel');
 const items = document.querySelectorAll('.carousel .item');
 
-// Variável para controle do deslocamento
 let scrollAmount = 0;
 
-// Atualiza a largura do item dinamicamente
+// Função para atualizar a largura do item
 function getItemWidth() {
-    return carousel.offsetWidth; // Usa a largura do carrossel como referência
+    return items[0].offsetWidth; // Usa a largura do primeiro item como referência
 }
 
 // Função para ajustar o scroll cíclico
 function moveCarousel(amount) {
-    const itemWidth = getItemWidth(); // Atualiza a largura do item sempre que for chamado
+    const itemWidth = getItemWidth(); // Atualiza a largura do item
     const maxScroll = (items.length - 1) * itemWidth;
 
     // Verifica se chegou ao fim ou ao início
@@ -31,16 +29,17 @@ function moveCarousel(amount) {
 
 // Evento para mover para a esquerda
 prevButton.addEventListener('click', () => {
-    moveCarousel(-getItemWidth()); // Move para a esquerda
+    moveCarousel(-getItemWidth()); 
 });
 
 // Evento para mover para a direita
 nextButton.addEventListener('click', () => {
-    moveCarousel(getItemWidth()); // Move para a direita
+    moveCarousel(getItemWidth());
 });
 
 // Atualiza o carrossel ao redimensionar a tela
 window.addEventListener('resize', () => {
-    scrollAmount = 0; // Reinicia o scroll ao redimensionar
-    carousel.scrollTo({ left: 0 }); // Move o carrossel para o início
+    // Atualiza a largura ao redimensionar, sem perder o controle do scroll
+    scrollAmount = Math.min(scrollAmount, (items.length - 1) * getItemWidth());
+    carousel.scrollTo({ left: scrollAmount });
 });
