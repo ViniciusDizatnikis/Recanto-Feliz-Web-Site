@@ -6,10 +6,6 @@
     font-family: 'Arial', sans-serif;
 }
 
-* img {
-    -webkit-user-drag: none; 
-}
-
 /* Corpo da página */
 body {
     background-color: #eee9e9;
