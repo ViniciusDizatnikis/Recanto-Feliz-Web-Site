@@ -62,7 +62,7 @@
 <h2>Conclusão</h2>
 <p>Desenvolver o site da Chácara Recanto Feliz foi uma experiência incrível. Não só me permitiu ajudar meus pais a divulgar o local, mas também me proporcionou uma ótima oportunidade de aprendizado em desenvolvimento web. Estou muito satisfeito com o resultado e ansioso para continuar aprendendo e melhorando a cada dia!</p>
 
-<p>Você pode acessar o site da Chácara Recanto Feliz clicando <a href="URL_DO_SEU_SITE" target="_blank">aqui</a>.</p>
+<p>Você pode acessar o site da Chácara Recanto Feliz clicando <a href="https://recanto-feliz.vercel.app" target="_blank">aqui</a>.</p>
 
 <hr>
 
